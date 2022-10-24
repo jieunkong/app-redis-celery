@@ -1,0 +1,33 @@
+
+version: "3"
+
+services:
+  app:
+    image: ${APP_NAME}:${VERSION}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME}
+    restart: always
+    healthcheck:
+     test: ["CMD-SHELL", "wget -nv -t1 --spider http://localhost:${APP_PORT}/api || exit 1"]
+     interval: 30s
+     timeout: 3s
+     retries: 3
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - ../:/app
+      - ../../../core:/app/core
+      - ../../../common:/app/common
+      - ../../../logs:/logs
+      - ../../../files:/files
+    command: python main.py
+    env_file: ${PWD}/.env
+#    networks:
+#      - default
+
+
+# networks:
+#   default:
+#     external: true
