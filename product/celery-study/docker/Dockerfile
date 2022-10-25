@@ -6,6 +6,8 @@ RUN pip install -r /install/requirements.txt
 
 WORKDIR /app
 
+ENV PYTHONDONTWRITEBYTECODE 1
+
 ARG APP_PORT
 EXPOSE ${APP_PORT}
 

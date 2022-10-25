@@ -24,10 +24,41 @@ services:
       - ../../../files:/files
     command: python main.py
     env_file: ${PWD}/.env
-#    networks:
-#      - default
+    networks:
+      - kong
 
+  redis:
+    image: redis:5.0-alpine
+    container_name: redis
+    hostname: redis
+    ports: 
+      - 6379:6379
+    restart: unless-stopped
+    volumes: 
+      - proj-redis:/data
+    networks:
+      - kong
+  
+  worker:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A app.worker.celery worker --loglevel=info
+    volumes:
+      - ../:/app
+      - ../../../core:/app/core
+      - ../../../common:/app/common
+      - ../../../logs:/logs
+      - ../../../files:/files
+    depends_on:
+      - app
+      - redis
+    networks:
+      - kong
 
-# networks:
-#   default:
-#     external: true
+volumes:
+  proj-redis:
+
+networks:
+  kong:
+  #  external: true
