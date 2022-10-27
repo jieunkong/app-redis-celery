@@ -24,36 +24,39 @@ app에서 리턴 받은 메시지를 출력하는 샘플 구조 구현하기 </b
     .
     ├── README.md
     ├── common
-    │   ├── const
-    │   ├── db
-    │   ├── depends
-    │   ├── mappers
-    │   ├── middleware
-    │   ├── models
-    │   ├── schemas
-    │   ├── services
-    │   ├── tests
-    │   └── utils
-    │       └── singleton.py
+    │   ├── const
+    │   ├── db
+    │   ├── depends
+    │   ├── mappers
+    │   ├── middleware
+    │   ├── models
+    │   ├── schemas
+    │   ├── services
+    │   ├── tests
+    │   └── utils
+    │       └── singleton.py
     ├── data
-    │   ├── files
-    │   └── logs
+    │   ├── files
+    │   └── logs
     └── product
-        └── celery-study
+        └── celery_study
             ├── app
-            │   ├── __init__.py
-            │   ├── routers
-            │   │   ├── __init__.py
-            │   │   └── v1
-            │   │       ├── __init__.py
-            │   │       └── user_route.py
-            │   └── worker.py
+            │   ├── __init__.py
+            │   ├── main.py
+            │   ├── routers
+            │   │   ├── __init__.py
+            │   │   └── v1
+            │   │       ├── __init__.py
+            │   │       └── user_route.py
+            │   ├── tests
+            │   │   ├── __init__.py
+            │   │   └── test_user.py
+            │   └── worker.py
             ├── common
             ├── config
-            │   └── app_config.py
-            ├── docker
-            │   ├── Dockerfile
-            │   ├── docker-compose.yml
-            │   └── requirements.txt
-            ├── main.py
-            └── tests
+            │   └── app_config.py
+            └── docker
+                ├── Dockerfile
+                ├── docker-compose.yml
+                ├── requirements.txt
+                └── run.sh
