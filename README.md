@@ -14,6 +14,11 @@ app에서 리턴 받은 메시지를 출력하는 샘플 구조 구현하기 </b
 3. worker
     - celery worker
 
+## 프로젝트 실행방법
+1. Fork this repository.
+2. Run project. <br>
+    `bash app-redis-celery/product/celery-study/docker/run.sh`
+
 ## 프로젝트 구조
     .
     ├── README.md
