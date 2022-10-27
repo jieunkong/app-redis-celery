@@ -17,7 +17,7 @@ app에서 리턴 받은 메시지를 출력하는 샘플 구조 구현하기 </b
 ## 프로젝트 실행방법
 1. Clone this repository.
 2. Run project. <br>
-    `cd app-redis-celery/product/celery_study/docker`
+    `cd app-redis-celery/product/celery_study/docker` <br>
     `bash run.sh`
 
 ## 프로젝트 구조
