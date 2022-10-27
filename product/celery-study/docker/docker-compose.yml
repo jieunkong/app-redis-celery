@@ -18,14 +18,11 @@ services:
       - ${APP_PORT}:${APP_PORT}
     volumes:
       - ../:/app
-      - ../../../core:/app/core
       - ../../../common:/app/common
-      - ../../../logs:/logs
-      - ../../../files:/files
     command: python main.py
     env_file: ${PWD}/.env
     networks:
-      - kong
+      - celery_study_net
 
   redis:
     image: redis:5.0-alpine
@@ -37,7 +34,7 @@ services:
     volumes: 
       - proj-redis:/data
     networks:
-      - kong
+      - celery_study_net
   
   worker:
     build: 
@@ -46,19 +43,16 @@ services:
     command: celery -A app.worker.celery worker --loglevel=info
     volumes:
       - ../:/app
-      - ../../../core:/app/core
       - ../../../common:/app/common
-      - ../../../logs:/logs
-      - ../../../files:/files
     depends_on:
       - app
       - redis
     networks:
-      - kong
+      - celery_study_net
 
 volumes:
   proj-redis:
 
 networks:
-  kong:
+  celery_study_net:
   #  external: true
