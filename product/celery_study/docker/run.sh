@@ -1,6 +1,6 @@
 docker build -t celery-study-app .
 
-echo
+echo 
 
 docker-compose down
 docker-compose up -d 

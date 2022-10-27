@@ -14,7 +14,7 @@ services:
     volumes:
       - ../:/app
       - ../../../common:/app/common
-    command: python main.py
+    command: python app/main.py
     env_file: ${PWD}/.env
     networks:
       - celery_study_net

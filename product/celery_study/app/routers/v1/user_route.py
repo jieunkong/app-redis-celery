@@ -4,6 +4,11 @@ from app.worker import celery
 router = APIRouter()
 
 
+@router.get("/")
+async def hello():
+    return Response(status_code=200, content='hello')
+
+
 @router.get("/{id}")
 async def get_user_info(id: int):
     task = celery.send_task('create_task', [int(id)])
