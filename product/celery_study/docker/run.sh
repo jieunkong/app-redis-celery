@@ -1,3 +1,5 @@
+#!/bin/bash
+
 docker build -t celery-study-app .
 
 echo 
@@ -7,6 +9,6 @@ docker-compose up -d
 
 echo
 
-docker ps | grep celery-study
+docker-compose logs -f 
 
 echo 
