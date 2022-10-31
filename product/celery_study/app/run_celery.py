@@ -1,7 +1,6 @@
 
 from celery import Celery
 from billiard import freeze_support
-from celery import Celery, Task
 
 
 class ConfigCelery:
