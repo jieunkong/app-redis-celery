@@ -14,7 +14,7 @@ services:
     volumes:
       - ../:/app
       - ../../../common:/app/common
-    command: bash -c "python app/main.py & python app/worker.py"
+    command: bash -c "python app/main.py & python app/run_celery.py"
     environment:
       - C_FORCE_ROOT=true
     env_file: ${PWD}/.env
