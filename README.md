@@ -11,7 +11,7 @@ app에서 리턴 받은 메시지를 출력하는 샘플 구조 구현하기 </b
     - api server
 2. redis
     - message queue
-3. worker
+3. core
     - celery worker
 
 ## 프로젝트 실행방법
@@ -48,13 +48,17 @@ app에서 리턴 받은 메시지를 출력하는 샘플 구조 구현하기 </b
             │   │   └── v1
             │   │       ├── __init__.py
             │   │       └── user_route.py
-            │   ├── tests
-            │   │   ├── __init__.py
-            │   │   └── test_user.py
-            │   └── worker.py
+            │   ├── run_celery.py
+            │   └── tests
+            │       ├── __init__.py
+            │       └── test_user.py
             ├── common
             ├── config
             │   └── app_config.py
+            ├── core
+            │   ├── run_celery.py
+            │   └── tasks
+            │       └── user_task.py
             └── docker
                 ├── Dockerfile
                 ├── docker-compose.yml
