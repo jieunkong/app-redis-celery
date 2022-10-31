@@ -14,7 +14,9 @@ services:
     volumes:
       - ../:/app
       - ../../../common:/app/common
-    command: python app/main.py
+    command: bash -c "python app/main.py & python app/worker.py"
+    environment:
+      - C_FORCE_ROOT=true
     env_file: ${PWD}/.env
     networks:
       - celery_study_net
@@ -36,7 +38,9 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command: celery -A app.worker.celery worker --loglevel=info
+    command: python core/run_celery.py #celery -A app.worker.celery worker --loglevel=info
+    environment:
+      - C_FORCE_ROOT=true
     volumes:
       - ../:/app
       - ../../../common:/app/common
