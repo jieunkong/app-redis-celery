@@ -11,7 +11,7 @@ async def hello():
 
 @router.get("/{id}")
 async def get_user_info(id: int):
-    task = celery.send_task('create_task', [int(id)])
-    worker_result = task.get(timeout=30)
+    # task = celery.send_task('create_task', [int(id)])   
+    worker_result = celery.send_task('tasks.AnalysisTask', [int(id)], queue='core', expires=60).get(timeout=60)
     return Response(status_code=200, content=worker_result)
     
